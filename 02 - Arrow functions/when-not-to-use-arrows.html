@@ -28,6 +28,14 @@
     }
   }
 
+  // const person = {
+  //   points: 23,
+  //   score: () => {
+  //     console.log(this);
+  //     this.points++;
+  //   }
+  // }
+
   // When you need to add a prototype method
   class Car {
     constructor(make, colour) {
@@ -43,13 +51,35 @@
      return `This car is a ${this.make} in the colour ${this.colour}`;
   };
 
+  // class Car {
+  //   constructor(make, colour) {
+  //     this.make = make;
+  //     this.colour = colour;
+  //   }
+  // }
+  //
+  // const beemer = new Car('bmw', 'blue');
+  // const subie = new Car('Subaru', 'white');
+  //
+  // Car.prototype.summarize = () => {
+  //    return `This car is a ${this.make} in the colour ${this.colour}`;
+  // };
+
   // When you need arguments object
-  const orderChildren = function() {
+  // const orderChildren = function() {
+  //   console.log(arguments);
+  //   const children = Array.from(arguments);
+  //   return children.map((child, i) => {
+  //     return `${child} was child #${i + 1}`;
+  //   })
+  // }
+
+  const orderChildren = () => {
+    console.log(arguments);
     const children = Array.from(arguments);
     return children.map((child, i) => {
       return `${child} was child #${i + 1}`;
     })
-    console.log(arguments);
   }
 
 
