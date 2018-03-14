@@ -201,3 +201,24 @@ const orderChildren = () => {
   })
 }
 ```
+#### 11 - Arrow Functions Exercises
+
+My answer:
+```js
+const videoSeconds = videoTimes.map(videoTime => {
+  const [minutes , seconds] = videoTime
+    .split(':')
+    .map(parseFloat);
+
+  return minutes * 60 + seconds;
+});
+```
++ Not entirely sure how the declaration of _minutes_ and _seconds_ is happening here, but suspect it's some destructuring magic.
+
+Bos answer:
+```js
+.map(timecode => {
+  const parts = timecode.split(':').map(part => parseFloat(part));
+  return (parts[0] * 60) + parts[1];
+})
+```
