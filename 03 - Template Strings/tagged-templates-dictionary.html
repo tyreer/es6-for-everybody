@@ -25,6 +25,42 @@
   const first = 'Wes';
   const last = 'Bos';
 
+  // function addAbbr(strings, ...values) {
+  //   let str = '';
+  //   strings.forEach((string, i) => {
+  //     const isAbbr = Object.keys(dict).includes(values[i]);
+  //     str += `${string} ${isAbbr ? `<abbr>${values[i]}</abbr>` : `${values[i] || ''}`}`
+  //   })
+  //   return str;
+  // }
+  function addAbbr(strings, ...values) {
+    const abbreviated = values.map(value => {
+      if(dict[value]) {
+        return `<abbr title="${dict[value]}">${value}</abbr>`;
+      }
+      return value;
+    })
+    // console.log(abbreviated);
+
+    return strings.reduce((acc, cur, i) => `${acc}${cur}${abbreviated[i]||''}`, '')
+    // return abbreviated.reduce((acc, cur) => acc + cur + ' ', '')
+  }
+
+
+  //   strings.forEach((string, i) => {
+  //     const isAbbr = Object.keys(dict).includes(values[i]);
+  //     str += `${string} ${isAbbr ? `<abbr>${values[i]}</abbr>` : `${values[i] || ''}`}`
+  //   })
+  //   return str;
+  // }
+
+  const text = addAbbr`Yo check ${first} ${last} out! They like ${'HTML'}, ${'CSS'}, ${'JS'}`;
+
+  const bioDiv = document.querySelector('.bio');
+  const paragraph = document.createElement('p');
+  paragraph.innerHTML = text;
+  bioDiv.appendChild(paragraph);
+
 </script>
 </body>
 </html>
