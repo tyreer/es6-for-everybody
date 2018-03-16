@@ -99,7 +99,7 @@ const sentence = highlight`My dog's name is ${name} and he is ${age} years old`;
 ```
 + Pass in the string and the tagged template literal is broken into its pieces, which can then be manipulated
   + __rest spread__ useful in accepting as many arguments as are passed in
-  + Suppose this is how you could make something like "drunkify text"
+  + Suppose this is how you could make something like "drunk-ify text"
 
 #### 15 - Tagged Templates Exercise
 
