@@ -24,7 +24,7 @@ for (const cut of cuts) {
 + Existing methods of iterating and their drawbacks
   + _for_ loop
     + Scope issue with _var_, slightly chunky syntax and no
-  + forEach
+  + _forEach_
     + No way to abort a loop with something like _break_
     + No way to skip over with _continue_
   + _for-in_ loop
