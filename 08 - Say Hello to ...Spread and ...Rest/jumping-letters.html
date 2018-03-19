@@ -30,7 +30,9 @@
   <h2 class="jump">SPREADS!</h2>
 
 <script>
-  
+
+  const target = document.querySelector('.jump');
+  target.innerHTML = [...target.textContent].map(letter => `<span>${letter}</span>`).join('')
 </script>
 </body>
 </html>
