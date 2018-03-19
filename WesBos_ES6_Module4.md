@@ -32,6 +32,7 @@ __.includes()__
 flightNumber.includes('AC'); //true
 flightNumber.includes('ac'); //false
 ```
++ Backstory on _contains()_ + MooTools name space
 
 __.repeat()__
 ```js
