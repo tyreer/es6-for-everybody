@@ -42,7 +42,7 @@ const modal = {
   }
 ```
 
-Can __dynamically set keys__ on an objects:
+Can __dynamically set keys__ on an object:
 
 ```js
 const key = 'pocketColor';
@@ -54,7 +54,7 @@ const tShirt = {
 };
 ```
 
-__Computed property keys__ are an option:
+__Computed property keys__ are possible in ES6:
 
 ```js
 const keys = ['size', 'color', 'weight'];
