@@ -1,4 +1,4 @@
-## Module 9 - Promises
+## Module 10 - Promises
 
 #### 34 - Promises
 
@@ -12,6 +12,7 @@ postsPromise
     console.error(err);
   })
 ```
++ __fetch()__ returns a promise
 + At time of declaration _postPromise_ is like an __IOU__
 + Think of __then()__ like a callback that allows for synchronous execution (once the IOU returns)
 + __.json()__ method is key to translating returned data into useful JSON
@@ -121,10 +122,10 @@ Promise
 
   + __Promise.all()__ accepts an array of promises and waits for them all to resolve
 
-  ```js
-  const [weatherInfo, tweetInfo] = responses;
-  ```
-+ Great use case for destructuring as a means to clear _const_ variables
+```js
+const [weatherInfo, tweetInfo] = responses;
+```
++ Great use case for destructuring as a means to declare _const_ variables
 
 ```js
 const postsPromise = fetch('http://wesbos.com/wp-json/wp/v2/posts');
