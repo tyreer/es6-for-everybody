@@ -141,3 +141,4 @@ Promise
   });
   ```
 + With __Promise.all()__, we still need to __convert the response to JSON__ via a __second Promise.all()__ invocation
++ Might consider global install of __Browsersync__ to get beyond the CORS limitation _fetch()_ to an actual API often will present
