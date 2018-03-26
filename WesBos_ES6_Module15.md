@@ -82,3 +82,95 @@ Dog.info()    // "This text should not be accessible on any instance"
 
 + A __getter__ is not a method but a property that is computed
 + A __setter__  allows you to assign a property
+
+#### 53 - Extending Classes and using super()
+
+```js
+class Animal {
+  constructor(name) {
+    this.name = name;
+    this.thirst = 100;
+    this.belly = [];
+  }
+  drink() {
+    this.thirst -= 10;
+    return this.thirst;
+  }
+  eat(food) {
+    this.belly.push(food);
+    return this.belly;
+  }
+}
+
+class Dolphasloth extends Animal {
+  constructor (name) {
+    super(name);
+    this.chillFactor = chillFactor;
+  }
+
+  slobber() {
+    this.thirst += 10;
+    this.chillFactor -= 10;
+    return this.thirst;
+  }
+}
+
+const ChillDude = new Dolphasloth('Chill Dude', 100)
+```
+
++ First need to create an instance of Animal before we can access _'this'_ in an extended classes
+  + We can do this with __super()__
+  + __super() will call whatever you're extending__
+    + Here _super()_ needs name passed in because _Animal()_ needs a name parameter for its constructor
+  + It runs the constructor function in the extended class, which in turn establishes _this_
+
+  ```js
+  super(name)
+  // equals
+  Animal(name)
+  ```
+
+#### 54 - Extending Arrays with Classes for Custom Collections
+
+Can extend any built in primitives
+
+```js
+class MovieCollection extends Array {
+  constructor(name, ...items) {
+    super(...items);
+    this.name = name;
+  }
+  add(movie) {
+    this.push(movie);
+  }
+  topRated(limit = 10) {
+    return this.sort((a, b) => (a.stars > b.stars ? -1 : 1)).slice(0, limit);
+  }
+}
+
+const movies = new MovieCollection('Wes\'s Fav Movies',
+  { name: 'Bee Movie', stars: 10 },
+  { name: 'Star Wars Trek', stars: 1 },
+  { name: 'Virgin Suicides', stars: 7 },
+  { name: 'King of the Road', stars: 8 }
+);
+
+movies.add({ name: 'Titanic', stars: 5 });
+```
+
+```js
+class MovieCollection extends Array {
+  constructor(name, ...items) {
+    super(...items);
+```
++ These three lines are pretty trippy
+  + First _...items_ is a rest operator that accepts as many parameters as are passed in (here movie objects)
+  + Second _...items_ is a spread operator that essentially creates a new array with the items passed in
+    + new _Array('1', '2', '3')_;
+
+```js
+for (const movie of movies) {
+  console.log(movie);
+}
+```
++ For...of is particularly useful here
