@@ -10,7 +10,7 @@ const personProxy = new Proxy(person, {
   },
   set(target, name, value) {
     if(typeof value === 'string') {
-      target[name] = `${value.trim()} ✂️'d`;
+      target[name] = `${value.trim()} (✂️'d)`;
     }
   }
 });
@@ -23,7 +23,7 @@ const personProxy = new Proxy(person, {
 
 ```js
 personProxy.cool = "     hella spaces here man   "
-console.log(personProxy.cool) // "HELLA SPACES HERE MAN ✂️'D";
+console.log(personProxy.cool) // "HELLA SPACES HERE MAN (✂️'D)";
 ```
 + The first dot notation above is the equivalent of calling __set__ on the Proxy, which we __trap__ in our handler and trim
 + The second dot notation is the equivalent of calling __get__, which our __trap__ transforms to uppercase
