@@ -37,7 +37,7 @@ Previously would need to use:
 
 ```js
 const modal = {
-  create: function() {
+  create: function(selector) {
 
   }
 ```

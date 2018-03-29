@@ -85,7 +85,7 @@ function* lyrics() {
 
 const achy = lyrics();
 
-for (const line of achy) {
+for (const line of achy) {  
   console.log(line);
 }
 ```

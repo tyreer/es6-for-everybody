@@ -129,6 +129,19 @@ const ChillDude = new Dolphasloth('Chill Dude', 100)
   Animal(name)
   ```
 
++ Good to note how this is what we do in React
+
+```js
+import React, { Component } from 'react';
+
+export default class Battle extends Component {
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+  }
+  ...
+}
+```
+
 #### 54 - Extending Arrays with Classes for Custom Collections
 
 Can extend any built-in primitives
@@ -172,4 +185,4 @@ for (const movie of movies) {
   console.log(movie);
 }
 ```
-+ The new ES6 iteration method __for...of__ is particularly useful here as the previous methods like __for..in__ are more difficult to use resultant data from 
++ The new ES6 iteration method __for...of__ is particularly useful here as the previous methods like __for..in__ are more difficult to use resultant data from
