@@ -47,8 +47,36 @@ const phoneNumbers = new Proxy({}, phoneHandler);
 ```js
 const phoneNumbers = new Proxy({}, phoneHandler);
 ```
-+ Starting the proxy from an empty array base.
++ Starting the proxy from an empty array base
 + Passing in a __handler object__ with various __traps__ that override built-in methods
 
+#### 59 - Using Proxies to combat silly errors
+
 ```js
+const safeHandler = {
+  set(target, name, value) {
+    const likeKey = Object.keys(target).find(k => k.toLowerCase() === name.toLowerCase());
+
+    if (!(name in target) && likeKey) {
+      throw new Error(`Oops! Looks like like we already have a(n) ${name} property but with the case of ${likeKey}.`);
+    }
+    target[name] = value;
+  }
+};
+
+const safety = new Proxy({ id: 100 }, safeHandler);
+
+safety.ID = 200;
 ```
+
+```js
+const safeHandler = {
+  set(target, name, value) {
+    const likeKey = Object.keys(target).find(k => k.toLowerCase() === name.toLowerCase());
+```
++ The handler, _safeHandler_, grabs the keys off the _target_ object and uses the _name_ parameter to access the key being used in the _set_ operation
+
+```js
+if (!(name in target) && likeKey) {
+```
++ ___(name in target)___ is new to me. Checks if an object has a key
