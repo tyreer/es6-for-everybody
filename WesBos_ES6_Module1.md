@@ -1,6 +1,6 @@
-# Notes on ES6
+# Notes on ES6 for Everyone
 
-Notes as I work through the Wes Bos _ES6 for Everyone_ course.
+Notes as I work through Wes Bos's _ES6 for Everyone_ course.
 
 Check out the course at [https://es6.io/](https://es6.io/)
 
@@ -11,8 +11,8 @@ Check out the course at [https://es6.io/](https://es6.io/)
 __var__
 + __Function scope__: Available inside function where a _var_ is created (local variable)
 + Or globally scoped if not in a function
-  + But generally not what we want. To update a variable outside a function we should __return__ from the function
-  + __if{} blocks are not functions__ and will leak _var_ variable scope
+  + Global scoped is generally not what we want. To update a variable outside a function we should __return__ from the function
+  + __if{} blocks are not functions__ and will leak _var_ variable scope. This isn't intuitive and exemplifies one of the big upgrades we get with _block scope_
 
 ```js
 var age = 100;
@@ -69,7 +69,7 @@ __IIFE__
 ```
 
 __for loop__
-+ The block scope of _let_ prevents the variable in a for loop from escaping into global scope.
++ The block scope of _let_ prevents the variable in a _for_ loop from escaping into global scope.
 + Also creates nine scopes in the example below that all retain their declared value, in contrast to _var_ which would be overridden and simply output the final value 10 times
 ```js
 for(let i = 0; i < 10; i++) {
@@ -96,7 +96,7 @@ const pizza = 'Deep Dish 🍕🍕🍕';
 + Most familiar to me:
 
 >+ use const by default
-+ only use let if rebinding is needed
-+ (var shouldn’t be used in ES2015)
+>+ only use _let_ if rebinding is needed
+>+ (var shouldn’t be used in ES2015)
 
 https://mathiasbynens.be/notes/es6-const

@@ -16,13 +16,13 @@ const fullNames3 = names.map(name => {
 ```
 + Doesn't __rebind__ the value of _this_
 
-+ Arrow functions are always __anonymous functions__, but they can be declared in a variable.
++ Arrow functions are always __anonymous functions__, but they can be declared in a variable
 ```js
 const sayMyName = (name) => {
   alert(`Hello ${name}!`)
 }
 ```
-One benefit of a named function is __tracking errors__ in a stack trace
+One benefit of a named function is that the name can be helpful in __tracking errors__ in a stack trace
 
 #### 07 - More Arrow Function Examples
 + Implicit return with object literal
@@ -213,7 +213,7 @@ const videoSeconds = videoTimes.map(videoTime => {
   return minutes * 60 + seconds;
 });
 ```
-+ Not entirely sure how the declaration of _minutes_ and _seconds_ is happening here, but suspect it's some destructuring magic.
++ Declaration of _minutes_ and _seconds_ is happening via destructuring since the other side of the equals operator will have an array.
 
 Bos answer:
 ```js
