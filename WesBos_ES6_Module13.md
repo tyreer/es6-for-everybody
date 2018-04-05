@@ -27,7 +27,8 @@ In _webpack.config.js_
 ```js
 const webpack = require('webpack');
 ```
-+ We use CommonJS _require_ here because __node doesn't deal with ES6 _import_ syntax__
++ We use CommonJS _require_ here because __Node doesn't deal with ES6 _import_ syntax__
+  + Interesting to note that Webpack is running in Node rather than in the browser. Makes sense as Webpack is bundling all the code before it is delivered to the browser
 
 ```js
 const nodeEnv = process.env.NODE_ENV || 'production';

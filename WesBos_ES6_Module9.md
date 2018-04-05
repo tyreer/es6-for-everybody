@@ -17,7 +17,7 @@ const dog = {
 };
 ```
 
-Simple modal syntax:
+__Simple modal syntax__ removes need for colon and _function_ keyword:
 ```js
 const modal = {
   create(selector) {

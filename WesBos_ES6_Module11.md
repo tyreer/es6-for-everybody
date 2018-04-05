@@ -9,9 +9,9 @@
   ```js
   const wes = Symbol('Wes');
   const person = Symbol('Wes');
-  console.log(wes === person) // fas;
+  console.log(wes === person) // false;
   ```
-+ Pass in a __descriptor)__—here _'Wes'_
++ Pass in a __descriptor__ (here _'Wes'_)
 + Symbol is a unique identifier
 + Actual symbol is something like a 40-character random string, and the descriptor just represents it for ease of reading
 
@@ -26,9 +26,9 @@
     console.log(person); //Nothing!
   }
 ```
++ Symbols __cannot be iterated__ over
 + Good example since people in a group need a unique identifier but could have the same name
   + Ensures keys in an object are absolutely unique
-+ Symbols cannot be iterated over
 + Potentially useful for storing private data?
 
 
@@ -37,5 +37,5 @@ const syms = Object.getOwnPropertySymbols(classRoom);
 const data = syms.map(sym => classRoom[sym]);
 console.log(data);
 ```
-+ __Object.getOwnPropertySymbols()__ pass in object and returns array of symbols, which can then be iterated over if we need to access databse
-+ Weird work around
++ __Object.getOwnPropertySymbols()__ pass in object and returns array of symbols, which can then be iterated over
+  + Weird work around

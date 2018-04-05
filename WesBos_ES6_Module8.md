@@ -70,6 +70,7 @@ const newComments = [...comments.slice(0,commentIndex), ...comments.slice(commen
 ```
 
 #### 31 - Spreading into a Function
+__Spread operators__ can be useful as __arguments__ passed into functions
 
 ```js
 const inventors = ['Einstein', 'Newton', 'Galileo'];
@@ -86,6 +87,7 @@ function sayHi(first, last) {
 
 sayHi(...name);
 ```
++ Simply saying, pass in all elements of the _name_ array
 
 #### 32 - The ...rest param in Functions and destructuring
 __Looks the exact same as spread__ operator but behaves differently as a function __parameter__

@@ -23,7 +23,7 @@ for (const cut of cuts) {
 
 + Existing methods of iterating and their drawbacks
   + _for_ loop
-    + Scope issue with _var_, slightly chunky syntax and no
+    + Scope issue with _var_, slightly chunky syntax
   + _forEach_
     + No way to abort a loop with something like _break_
     + No way to skip over with _continue_
@@ -31,7 +31,7 @@ for (const cut of cuts) {
     + Weirdly, will also iterate over anything added to the prototype, not only the items in the iterable collection
     + 3rd party code might extend prototype (MooTools)
 
-#### 23 - The for of Loop in Action
+#### 23 - The for-of Loop in Action
 
 ```js
 for (const [i, cut] of cuts.entries()) {
@@ -39,6 +39,8 @@ for (const [i, cut] of cuts.entries()) {
 }
 ```
 + __entries__ is immediately destructured into two variables
+
+>Array.prototype.entries(): The entries() method returns a new Array Iterator object that contains the key/value pairs for each index in the array.
 
 ```js
 function addUpNumbers() {
@@ -64,7 +66,7 @@ for (const paragraph of ps) {
 ```
 + I'd typically use _forEach_ to add event listeners, but _for-of_ might be useful if you wanted to use _break_ or _continue_ to more selectively apply event handlers
 
-#### 24 - Using for of with Objects
+#### 24 - Using for-of with Objects
 
 + __Object.entries()__ is standard in ES2017
   + Subject of video 77

@@ -6,7 +6,7 @@ const { A, B } = { A: 'value1', B: 'value2' };
 ```
 
 ```js
-const [ A, B ] = ['value1', 'value2']
+const [ A, B ] = ['value1', 'value2'];
 ```
 
 In both cases:
@@ -71,14 +71,14 @@ const { twitter: tweet, facebook: fb } = wes.links.social;
 __Setting defaults__
 
 ```js
-const settings = { width: 300, color: 'black' }  // height, fontSize
+const settings = { width: 300, color: 'black' }
 const { width = 100, height = 100, color = 'blue', fontSize = 25} = settings;
 ```
 + If the value exists in _settings_ then it will override the default
 
 __Combined example__
 ```js
-// Object Destructuring with variable renaming & default values
+// Object destructuring with variable renaming & default values
 const { w: width = 400, h: height = 500 } = { w: 800 }
 ```
 + Not necessarily a common use case, but models all concepts
@@ -91,13 +91,13 @@ __Array destructuring syntax__
 const details = ['Wes Bos', 123, 'wesbos.com'];
 const [name, id, website] = details;
 ```
-+ Uses __square brackets__, as opposed to curly brackets for objects.
++ Uses __square brackets__, as opposed to curly brackets for objects
 
 ```js
 const data = 'Basketball,Sports,90210,23,wes,bos,cool';
 const [itemName, category, sku, inventory] = data.split(',');
 ```
-+ Creating an array from a string with _split()_, and then immediately destructuring into the four desired variables.
++ Creating an array from a string with _split()_, and then immediately destructuring into the four desired variables
 
 ```js
 const team = ['Wes', 'Harry', 'Sarah', 'Keegan', 'Riker'];

@@ -2,6 +2,10 @@
 
 #### 55 - Introducing Generators
 
+__NOTE:__ I get the sense that __async functions__ are preferred over generators to handle promise-returning functions
++ https://developers.google.com/web/fundamentals/primers/async-functions
++ Introduced in video 20, seemingly as an update to the course
+
 ```js
 function* listPeople(){
   yield 'Joe';

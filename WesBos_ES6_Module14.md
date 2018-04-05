@@ -82,10 +82,11 @@ https://babeljs.io/docs/plugins/preset-env/
 #### 50 - Polyfilling ES6 for Older Browsers
 
 ```js
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script> ```
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+```
 
 + Babel accounts for the __syntax__ changes in ES6, but new methods like __Arrary.from()__ are not transpiled
-+ They need a polyfill
+  + They need a polyfill
 
 __Two options__
 + babel-polyfill
@@ -93,4 +94,4 @@ __Two options__
 + polyfill.io
   + https://polyfill.io/v2/docs/
   + Pretty cool as it dynamically detects a browser's user agent and polyfills only as needed
-  + May have less "code overhead" than the babel polyfill since it only loads what it needs
+  + May have less "code overhead" than the Babel polyfill since it only loads what it needs

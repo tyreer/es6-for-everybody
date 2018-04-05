@@ -17,7 +17,7 @@ const people = document.querySelectorAll('.people p');
 const peopleArray = Array.from(people, person => person.textContent);
 console.log(peopleArray); //["Wes", "Kait", "Snickers"]
 ```
-+ __Second parameter runs map method__
++ __Second parameter runs map__ method 🆒
 
 ```js
 function sumAll() {
@@ -37,7 +37,7 @@ console.log(ages); // [12, 4, 23, 62, 34]
 ```
 + Pretty straightforward
 
-#### 26 - Array. find() and .findIndex()
+#### 26 - Array.find() and Array.findIndex()
 
 ```js
 const posts = [
@@ -58,7 +58,7 @@ const posts = [
 ];
 const code = 'VBgtGQcSf';
 const post = posts.find(post => post.code === code);
-console.log(post); // { FULL OBJECT MATCHING CONDITION }
+console.log(post); // { ENTIRE OBJECT THAT MATCHES THE CONDITION }
 ```
 + __find()__ returns once a condition is true
   + If you wanted multiple results, then use __filter()__
@@ -67,10 +67,10 @@ console.log(post); // { FULL OBJECT MATCHING CONDITION }
   const postIndex = posts.findIndex(post => post.code === code);
   console.log(postIndex); // 22
 ```
-+ Useful if you want to do something like delete a post or apply a highlight class
++ __findIndex()__: Useful if you want to do something like delete a post or apply a highlight class
 
 #### 27 - Array .some() and .every()
-+ Not a part of ES6, but included as just for utility
++ Not a part of ES6, but included because useful and somewhat rare "in the wild"
 
 ```js
 const ages = [32, 15, 19, 12];

@@ -102,7 +102,7 @@ class Animal {
 }
 
 class Dolphasloth extends Animal {
-  constructor (name) {
+  constructor (name, chillFactor) {
     super(name);
     this.chillFactor = chillFactor;
   }
@@ -129,7 +129,7 @@ const ChillDude = new Dolphasloth('Chill Dude', 100)
   Animal(name)
   ```
 
-+ Good to note how this is what we do in React
++ Good to note that this is happening all the time in React
 
 ```js
 import React, { Component } from 'react';
@@ -177,7 +177,7 @@ class MovieCollection extends Array {
 ```
 + These three lines are pretty trippy
   + The first _...items_ is a __rest operator__ that accepts as many parameters as are passed in (here movie objects)
-  + The second _...items_ is a __spread operator__ that essentially creates a new array with the items passed in
+  + The second _...items_ is a __spread operator__ that essentially creates a new array with the items passed in (because _super_ is invoking the _Array_ primitive)
     + new _Array('1', '2', '3')_;
 
 ```js
@@ -185,4 +185,4 @@ for (const movie of movies) {
   console.log(movie);
 }
 ```
-+ The new ES6 iteration method __for...of__ is particularly useful here as the previous methods like __for..in__ are more difficult to use resultant data from
++ The new ES6 iteration method __for...of__ is particularly useful here as the previous methods like __for...in__ are more difficult to use resultant data from

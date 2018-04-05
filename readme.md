@@ -14,3 +14,7 @@ Key notes:
   + importing a named export
 
 + Apply generator lesson to GH explorer?
+
++ Simple webpack 4
+
++ Simple Browsersync 
