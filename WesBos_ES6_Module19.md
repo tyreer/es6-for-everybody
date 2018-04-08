@@ -23,12 +23,12 @@ for (const [key, val] of dogs) {
   console.log(key, val);
 }
 ```
-+ Two ways to iterate: __forEach__ + __for...of___
++ Two ways to iterate: __forEach__ + __for...of__
 
 ```js
 for (const [key, val] of dogs) {
 ```
-+ Because each element in a map returns an _array_ with the _key_ and _value_, we can use __destructuring__ signalled by the square brackets here to declare these as variables being pulled out of the array
++ Because each element in a Map returns an _array_ with the _key_ and _value_, we can use __destructuring__ signalled by the square brackets here to declare these as variables being pulled out of the array
 
 #### 64 - Map Metadata with DOM Node Keys
 
@@ -46,7 +46,7 @@ buttons.forEach(button => {
   });
 });
 ```
-+ The __keys on a map can be objects__, in this case a DOM node
++ The __keys on a Map can be objects__, in this case a DOM node
   + The enhanced feature over an object literal is that the __key isn't limited to being a string__
 
 ```js
@@ -56,7 +56,7 @@ button.addEventListener('click', function() {
   clickCounts.set(this, val + 1);
 ```
 + __get()__ and __set()__ used this way still feels quite weird to me
-+ Because _this_ refers to __both the DOM node__ registering the click event _and_ __the map key__, it can be seen as an accurate identifier
++ Because _this_ refers to __both the DOM node__ registering the click event _and_ __the Map key__, it can be seen as an accurate identifier
 
 
 #### 65 - WeakMap and Garbage Collection
@@ -75,8 +75,8 @@ dog1 = null;
 dog2 = null;
 ```
 
-+ The __WeakMap__ here allows the deleted _dog2_ variable to be garbage collected
-  + This prevents a __memory leak__ where dog could be references even though it is removed from our application. Such a memory leak is potential in the _strong map_
-  + Bos says WeakMap is useful when you __don't want to "babysit"__ what is included in your map
++ The __WeakMap__ here allows the deleted _dog2_ variable to be __garbage collected__
+  + This prevents a __memory leak__, where _dog2_ might be referenced even though it's been removed from our application. The "_strong_" __Map__, on the other hand, could expose the app to such a potential memory leak
+  + Bos says WeakMap is useful when you __don't want to "babysit"__ what is included in your Map
   + https://stackoverflow.com/questions/29413222/what-are-the-actual-uses-of-es6-weakmap
   + How does the browser know that a given object or DOM node __has no references__ to it and can therefor be garbage collected?

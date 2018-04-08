@@ -31,7 +31,7 @@ const students = new Set(['Wes', 'Kara', 'Tony']);
 const dogs = ['Snickers', 'Sunny'];
 const dogSet = new Set(dogs);
 ```
-+ Can create a set by passing in an array
++ Can create a Set by passing in an array
 
 #### 62 - Understanding Sets with Brunch
 
@@ -46,11 +46,11 @@ console.log(line.next().value); // Sarah
 console.log(brunch); //Set(3) {"Wes", "Sarah", "Simone"}
 console.log(line); //SetIterator {"Simone"}
 ````
-+ When you call __next()__ against a SetIterator the value at the current position will remove itself
++ When you call __next()__ against a SetIterator the value at the current position __will remove itself__ (mutation by default, weird)
 
 #### 63 - WeakSets
 
-+ A __weak set can only ever contain objects__
++ A __WeakSet can only ever contain objects__
 + Cannot loop over a weak set (no iterator)
 + Cannot use __clear()__
 

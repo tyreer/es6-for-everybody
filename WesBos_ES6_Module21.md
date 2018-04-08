@@ -17,17 +17,21 @@ class Dog {
 }
 ```
  + Declaring _barks_ outside constructor is an example of a __class property__
- + Commonly used in __React__ in the case of examples below
-   + https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce
+ + Commonly used in __React__
 
  ```js
- state = {}
- ```
- or
+ class Mouse extends React.Component {
+  static propTypes = {
+    render: PropTypes.func.isRequired
+  }
 
- ```js
- innitialProps = {}
- ```
+  state = { x: 0, y: 0 }
+  ...
+  }
+  ```
+  https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce
+
+
 Needs this Babel transform
 https://babeljs.io/docs/plugins/transform-class-properties/
 
@@ -83,9 +87,9 @@ function family(
 
 }
 ```
-+ Just as with arrays and objects, function arguments can accept __trialing commas__
-+ Rationale is that someone contributing will not have a line they're not really associated with come up as their edit just because they added a commas
-+ Add rule to __ESLint__ and __Prettier__
++ Just as with arrays and objects, function arguments can accept __trailing commas__
++ Rationale is that someone contributing will not have a line they're not really associated with come up as their edit just because they added a comma
++ Typically best to just add rule to __ESLint__ and __Prettier__
 
 #### 77 - Object.entries() + Object.values()
 ```js

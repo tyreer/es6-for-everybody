@@ -1,18 +1,20 @@
 ## Module 20 - Async + Await Flow Control
+Also a great resource:
+https://developers.google.com/web/fundamentals/primers/async-functions
 
 #### 67 - Async Await - Native Promises Review
 Two models of native promises
-+ __then()__ + __catch()__
++ Each use __then()__ + __catch()__
 
 __fetch__
 ```js
 fetch('https://api.github.com/users/wesbos').then(res => {
-  return res.json();
-}).then(res => {
-  console.log(res);
-}).catch(err => {
-  console.error('OH NOO!!!!!!!');
-  console.error(err);
+    return res.json();
+  }).then(res => {
+    console.log(res);
+  }).catch(err => {
+    console.error('OH NOO!!!!!!!');
+    console.error(err);
 })
 ```
 + _Fetch()_ is a native method that returns a promise
@@ -20,15 +22,15 @@ fetch('https://api.github.com/users/wesbos').then(res => {
 
 __getUserMedia__
 ```js
-  const video = document.querySelector('.handsome'); //<video controls class="handsome"></video>
+const video = document.querySelector('.handsome'); //<video controls class="handsome"></video>
 
-  navigator.mediaDevices.getUserMedia({ video: true }).then(mediaStream => {
-    video.srcObject = mediaStream;
-    video.load();
-    video.play();
-  }).catch(err => {
-    console.log(err);
-  })
+navigator.mediaDevices.getUserMedia({ video: true }).then(mediaStream => {
+  video.srcObject = mediaStream;
+  video.load();
+  video.play();
+}).catch(err => {
+  console.log(err);
+})
 ```
 
 #### 68 - Async Await - Custom Promises Review
@@ -56,9 +58,9 @@ breathe(1000).then(res => {
 + __reject__ will throw an error, which needs to be caught with __catch()__
 
 #### 69 - All About Async + Await
-Almost all the time, JS is __asynchronous__, meaning the execution of code is __not blocking__ other code from executing.
+Almost all the time, JS is __asynchronous__, meaning the execution of code is __not blocking__ other code from executing
 
-Promises and Async + Await allow a degree of __flow control__
+__Promises and Async + Await__ allow a degree of __flow control__
 
 ```js
 function breathe(amount) {
@@ -85,7 +87,7 @@ async function go() {
 
 go();
 ```
-+ Within an __async__ function, we can use __await__ which allows a __promise__ to be _reovled_ or _rejected_ prior to moving on
++ Within an __async__ function, we can use __await__ which allows a __promise__ to be _resolved_ or _rejected_ prior to moving on
 
 #### 70 - Async + Await Error Handling
 __Basic try/catch__
@@ -139,7 +141,7 @@ const wrappedFunction = catchErrors(go);
 wrappedFunction('Joe', 'Winner');
 ```
 + __Use case:__ You need a general error handler that can be reused on various functions
-+ The wrapped function has error handling "sprinkled onto it" by the __higher-order__ function
++ The wrapped function has error handling "sprinkled onto it" by the __higher-order function__
 
 ```js
 function catchErrors(fn) {
@@ -179,7 +181,7 @@ go();
 ```js
 const [wes, scott] = await Promise.all(dataPromises);
 ```
-+ __Destructing__ two immediately declared variables from the array retuned by _Promise.all()_
++ __Destructing__ two immediately declared variables from the array returned by _Promise.all()_
 
 __Method two__
 
@@ -192,8 +194,26 @@ async function getData(names) {
 
 getData(['wesbos', 'stolinski', 'darcyclarke']);
 ```
-+ Can chain the fetch and then calls together
++ Can chain the _fetch()_ and _then()_ calls together
   + I like 👆
+
+Related example from Jake Archibald:
+
+```js
+async function logInOrder(urls) {
+  // fetch all the URLs in parallel
+  const textPromises = urls.map(async url => {
+    const response = await fetch(url);
+    return response.text();
+  });
+
+  // log them in sequence
+  for (const textPromise of textPromises) {
+    console.log(await textPromise);
+  }
+}
+```
+https://developers.google.com/web/fundamentals/primers/async-functions
 
 #### 72 - Promisifying Callback Based Functions
 

@@ -28,7 +28,7 @@ console.log(personProxy.cool) // "HELLA SPACES HERE MAN (✂️'D)";
 + The first dot notation above is the equivalent of calling __set__ on the Proxy, which we __trap__ in our handler and trim
 + The second dot notation is the equivalent of calling __get__, which our __trap__ transforms to uppercase
 
-#### 59 - Another Proxy Example?
+#### 59 - Another Proxy Example
 
 ```js
 const phoneHandler = {
@@ -46,8 +46,10 @@ const phoneNumbers = new Proxy({}, phoneHandler);
 
 ```js
 const phoneNumbers = new Proxy({}, phoneHandler);
+phoneNumbers.test = '344222-7522';
+console.log(phoneNumbers.test) //"(344)-222-7522"
 ```
-+ Starting the proxy from an empty array base
++ Starting the proxy from an empty object "target"
 + Passing in a __handler object__ with various __traps__ that override built-in methods
 
 #### 59 - Using Proxies to combat silly errors
