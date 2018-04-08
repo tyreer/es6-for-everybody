@@ -2124,373 +2124,373 @@ dog2 = null;
   + https://stackoverflow.com/questions/29413222/what-are-the-actual-uses-of-es6-weakmap
   + How does the browser know that a given object or DOM node __has no references__ to it and can therefor be garbage collected?
 
-  ## Module 20 - Async + Await Flow Control
+## Module 20 - Async + Await Flow Control
 
-  Also a great resource:
-  https://developers.google.com/web/fundamentals/primers/async-functions
+Also a great resource:
+https://developers.google.com/web/fundamentals/primers/async-functions
 
-  #### 67 - Async Await - Native Promises Review
-  Two models of native promises
-  + Each use __then()__ + __catch()__
+#### 67 - Async Await - Native Promises Review
+Two models of native promises
++ Each use __then()__ + __catch()__
 
-  __fetch__
-  ```js
-  fetch('https://api.github.com/users/wesbos').then(res => {
-      return res.json();
-    }).then(res => {
-      console.log(res);
-    }).catch(err => {
-      console.error('OH NOO!!!!!!!');
-      console.error(err);
-  })
-  ```
-  + _Fetch()_ is a native method that returns a promise
-    + Using __console.error__ provides more of a stack trace
-
-  __getUserMedia__
-  ```js
-  const video = document.querySelector('.handsome'); //<video controls class="handsome"></video>
-
-  navigator.mediaDevices.getUserMedia({ video: true }).then(mediaStream => {
-    video.srcObject = mediaStream;
-    video.load();
-    video.play();
-  }).catch(err => {
-    console.log(err);
-  })
-  ```
-
-  #### 68 - Async Await - Custom Promises Review
-  ```js
-  function breathe(amount) {
-    return new Promise((resolve, reject) => {
-      if (amount < 500) {
-        reject('That is too small of a value');
-      }
-      setTimeout(() => resolve(`Done for ${amount} ms`), amount);
-    });
-  }
-
-  breathe(1000).then(res => {
-    console.log(res);
-    return breathe(500);
+__fetch__
+```js
+fetch('https://api.github.com/users/wesbos').then(res => {
+    return res.json();
   }).then(res => {
     console.log(res);
-    return breathe(600);
   }).catch(err => {
+    console.error('OH NOO!!!!!!!');
     console.error(err);
-  })
-  ```
-  + We can write a function that __returns a custom promise__
-  + __reject__ will throw an error, which needs to be caught with __catch()__
+})
+```
++ _Fetch()_ is a native method that returns a promise
+  + Using __console.error__ provides more of a stack trace
 
-  #### 69 - All About Async + Await
-  Almost all the time, JS is __asynchronous__, meaning the execution of code is __not blocking__ other code from executing
+__getUserMedia__
+```js
+const video = document.querySelector('.handsome'); //<video controls class="handsome"></video>
 
-  __Promises and Async + Await__ allow a degree of __flow control__
+navigator.mediaDevices.getUserMedia({ video: true }).then(mediaStream => {
+  video.srcObject = mediaStream;
+  video.load();
+  video.play();
+}).catch(err => {
+  console.log(err);
+})
+```
 
-  ```js
-  function breathe(amount) {
-    return new Promise((resolve, reject) => {
-      if (amount < 500) {
-        reject('That is too small of a value');
-      }
-      setTimeout(() => resolve(`Done for ${amount} ms`), amount);
-    });
-  }
-
-  async function go() {
-    console.log(`Starting`);
-    const res = await breathe(1000);
-    console.log(res);
-    const res2 = await breathe(300);
-    console.log(res2);
-    const res3 = await breathe(750);
-    console.log(res3);
-    const res4 = await breathe(900);
-    console.log(res4);
-    console.log('end');
-  }
-
-  go();
-  ```
-  + Within an __async__ function, we can use __await__ which allows a __promise__ to be _resolved_ or _rejected_ prior to moving on
-
-  #### 70 - Async + Await Error Handling
-  __Basic try/catch__
-  ```js
-  async function go(firstName, lastName) {
-    try {
-      console.log(`Starting for ${firstName} ${lastName}`);
-      const res = await breathe(1000);
-      console.log(res);
-      const res2 = await breathe(100);
-      console.log(res2);
-      console.log('end');
-    } catch(err) {
-      console.error(err);
+#### 68 - Async Await - Custom Promises Review
+```js
+function breathe(amount) {
+  return new Promise((resolve, reject) => {
+    if (amount < 500) {
+      reject('That is too small of a value');
     }
-  }
-  ```
-  + __Use case:__ You need to handle an error unique to this function
-    + For instance, in a form
+    setTimeout(() => resolve(`Done for ${amount} ms`), amount);
+  });
+}
 
-  __Higher-order function for error handling__
-  ```js
-  function breathe(amount) {
-    return new Promise((resolve, reject) => {
-      if (amount < 500) {
-        reject('That is too small of a value');
-      }
-      setTimeout(() => resolve(`Done for ${amount} ms`), amount);
-    });
-  }
+breathe(1000).then(res => {
+  console.log(res);
+  return breathe(500);
+}).then(res => {
+  console.log(res);
+  return breathe(600);
+}).catch(err => {
+  console.error(err);
+})
+```
++ We can write a function that __returns a custom promise__
++ __reject__ will throw an error, which needs to be caught with __catch()__
 
-  function catchErrors(fn) {
-    return function(...args){
-      return fn(...args).catch((err) => {
-        console.error(err);
-      });
+#### 69 - All About Async + Await
+Almost all the time, JS is __asynchronous__, meaning the execution of code is __not blocking__ other code from executing
+
+__Promises and Async + Await__ allow a degree of __flow control__
+
+```js
+function breathe(amount) {
+  return new Promise((resolve, reject) => {
+    if (amount < 500) {
+      reject('That is too small of a value');
     }
-  }
+    setTimeout(() => resolve(`Done for ${amount} ms`), amount);
+  });
+}
 
-  async function go(firstName, lastName) {
+async function go() {
+  console.log(`Starting`);
+  const res = await breathe(1000);
+  console.log(res);
+  const res2 = await breathe(300);
+  console.log(res2);
+  const res3 = await breathe(750);
+  console.log(res3);
+  const res4 = await breathe(900);
+  console.log(res4);
+  console.log('end');
+}
+
+go();
+```
++ Within an __async__ function, we can use __await__ which allows a __promise__ to be _resolved_ or _rejected_ prior to moving on
+
+#### 70 - Async + Await Error Handling
+__Basic try/catch__
+```js
+async function go(firstName, lastName) {
+  try {
     console.log(`Starting for ${firstName} ${lastName}`);
     const res = await breathe(1000);
     console.log(res);
     const res2 = await breathe(100);
     console.log(res2);
     console.log('end');
+  } catch(err) {
+    console.error(err);
   }
+}
+```
++ __Use case:__ You need to handle an error unique to this function
+  + For instance, in a form
 
-  const wrappedFunction = catchErrors(go);
-
-  wrappedFunction('Joe', 'Winner');
-  ```
-  + __Use case:__ You need a general error handler that can be reused on various functions
-  + The wrapped function has error handling "sprinkled onto it" by the __higher-order function__
-
-  ```js
-  function catchErrors(fn) {
-    return function(...args){
-      return fn(...args).catch((err) => {
-        console.error(err);
-      });
+__Higher-order function for error handling__
+```js
+function breathe(amount) {
+  return new Promise((resolve, reject) => {
+    if (amount < 500) {
+      reject('That is too small of a value');
     }
+    setTimeout(() => resolve(`Done for ${amount} ms`), amount);
+  });
+}
+
+function catchErrors(fn) {
+  return function(...args){
+    return fn(...args).catch((err) => {
+      console.error(err);
+    });
   }
-  ```
-  + The first _...args_ is a __rest operator__ and the second _...args_ is a __spread operator__
-    + This allows us to pass in any number of parameters to the wrapped function
+}
 
-  #### 71 - Waiting on Multiple Promises
-  We want multiple fetches to go out into the world rather than waiting for each one to return before the next is issued. So, this would most likely be __bad__:
-  ```js
-  async function go() {
-    const p1 = await fetch('https://api.github.com/users/wesbos');
-    const p2 = await fetch('https://api.github.com/users/stolinski');
-  ```
+async function go(firstName, lastName) {
+  console.log(`Starting for ${firstName} ${lastName}`);
+  const res = await breathe(1000);
+  console.log(res);
+  const res2 = await breathe(100);
+  console.log(res2);
+  console.log('end');
+}
 
-  __Method one__
-  ```js
-  async function go() {
-    const p1 = fetch('https://api.github.com/users/wesbos');
-    const p2 = fetch('https://api.github.com/users/stolinski');
-    const res = await Promise.all([p1, p2]);
-    const dataPromises = res.map(r => r.json());
-    const [wes, scott] = await Promise.all(dataPromises);
-    console.log(wes, scott);
-    // const people = await Promise.all(dataPromises); // Alternative if we don't know how many people being returned  
+const wrappedFunction = catchErrors(go);
+
+wrappedFunction('Joe', 'Winner');
+```
++ __Use case:__ You need a general error handler that can be reused on various functions
++ The wrapped function has error handling "sprinkled onto it" by the __higher-order function__
+
+```js
+function catchErrors(fn) {
+  return function(...args){
+    return fn(...args).catch((err) => {
+      console.error(err);
+    });
   }
-  go();
-  ```
-  + Need two __await Promise.all__ when handling fetched data
+}
+```
++ The first _...args_ is a __rest operator__ and the second _...args_ is a __spread operator__
+  + This allows us to pass in any number of parameters to the wrapped function
 
-  ```js
+#### 71 - Waiting on Multiple Promises
+We want multiple fetches to go out into the world rather than waiting for each one to return before the next is issued. So, this would most likely be __bad__:
+```js
+async function go() {
+  const p1 = await fetch('https://api.github.com/users/wesbos');
+  const p2 = await fetch('https://api.github.com/users/stolinski');
+```
+
+__Method one__
+```js
+async function go() {
+  const p1 = fetch('https://api.github.com/users/wesbos');
+  const p2 = fetch('https://api.github.com/users/stolinski');
+  const res = await Promise.all([p1, p2]);
+  const dataPromises = res.map(r => r.json());
   const [wes, scott] = await Promise.all(dataPromises);
-  ```
-  + __Destructing__ two immediately declared variables from the array returned by _Promise.all()_
+  console.log(wes, scott);
+  // const people = await Promise.all(dataPromises); // Alternative if we don't know how many people being returned  
+}
+go();
+```
++ Need two __await Promise.all__ when handling fetched data
 
-  __Method two__
+```js
+const [wes, scott] = await Promise.all(dataPromises);
+```
++ __Destructing__ two immediately declared variables from the array returned by _Promise.all()_
 
-  ```js
-  async function getData(names) {
-    const promises = names.map(name => fetch(`https://api.github.com/users/${name}`).then(r => r.json()));
-    const people = await Promise.all(promises);
-    console.log(people);
-  }
+__Method two__
 
-  getData(['wesbos', 'stolinski', 'darcyclarke']);
-  ```
-  + Can chain the _fetch()_ and _then()_ calls together
-    + I like 👆
+```js
+async function getData(names) {
+  const promises = names.map(name => fetch(`https://api.github.com/users/${name}`).then(r => r.json()));
+  const people = await Promise.all(promises);
+  console.log(people);
+}
 
-  Related example from Jake Archibald:
+getData(['wesbos', 'stolinski', 'darcyclarke']);
+```
++ Can chain the _fetch()_ and _then()_ calls together
+  + I like 👆
 
-  ```js
-  async function logInOrder(urls) {
-    // fetch all the URLs in parallel
-    const textPromises = urls.map(async url => {
-      const response = await fetch(url);
-      return response.text();
-    });
+Related example from Jake Archibald:
 
-    // log them in sequence
-    for (const textPromise of textPromises) {
-      console.log(await textPromise);
-    }
-  }
-  ```
-  https://developers.google.com/web/fundamentals/primers/async-functions
-
-  #### 72 - Promisifying Callback Based Functions
-
-  ```js
-  // navigator.geolocation.getCurrentPosition(function (pos) {
-  //   console.log('it worked!');
-  //   console.log(pos);
-  // }, function (err) {
-  //   console.log('it failed!');
-  //   console.log(err);
-  // });
-
-  function getCurrentPosition(...args) {
-    return new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(...args, resolve, reject);
-    });
-  }
-
-  async function go() {
-    console.log('starting');
-    const pos = await getCurrentPosition();
-    console.log(pos);
-    console.log('finished');
-  }
-
-  go();
-  ```
-  + Allows us to make a callback-oriented API work on promises
-  + 3rd party options also, including a built-in Node utility
-
-  ## Module 21 - ES7, ES8 + Beyond
-
-  #### 73 - Class Properties
-  ```js
-  class Dog {
-    constructor(name, breed) {
-      this.name = name;
-      this.breed = breed;
-    }
-
-    barks = 0;
-
-    bark() {
-      console.log(`Bark Bark! My name is ${this.name}`);
-      this.barks = this.barks + 1;
-    }
-  }
-  ```
-   + Declaring _barks_ outside constructor is an example of a __class property__
-   + Commonly used in __React__
-
-   ```js
-   class Mouse extends React.Component {
-    static propTypes = {
-      render: PropTypes.func.isRequired
-    }
-
-    state = { x: 0, y: 0 }
-    ...
-    }
-    ```
-    https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce
-
-
-  Needs this Babel transform
-  https://babeljs.io/docs/plugins/transform-class-properties/
-
-  #### 74 - padStart and padEnd
-  > The padStart() method pads the current string with another string (repeated, if needed) so that the resulting string reaches the given length.
-
-  ```js
-  "1".padStart(3, 0) // 001
-  ```
-  + Useful if trying to right align text to the longest string in a series
-
-  ```js
-  const strings = ['short', 'medium size', 'this is really really long', 'this is really really really really really really long'];
-  const longestString = strings.sort(str => str.length).map(str => str.length)[0];
-
-  strings.forEach(str => console.log(str.padStart(longestString)));
-  ```
-
-  #### 75 -  ES7 Array.includes() + Exponential Operator
-  __Array.includes()__
-  ```js
-  ['a', 'b', 'c'].includes('c') //true
-  ```
-
-  __Exponential Operator__
-  ```js
-  3 ** 3 //27
-  ```
-
-  #### 76 - Function Arguments Trailing Comma
-  ```js
-  const names = [
-    'wes',
-    'kait',
-    'lux',
-    'poppy',
-  ];
-
-  const people = {
-    wes: 'Cool',
-    kait: 'Even Cooler!',
-    lux: 'Coolest',
-    poppy: 'Smallest',
-    snickers: 'Bow wow',
-  }
-
-  function family(
-    mom,
-    dad,
-    children,
-    dogs,
-  ) {
-
-  }
-  ```
-  + Just as with arrays and objects, function arguments can accept __trailing commas__
-  + Rationale is that someone contributing will not have a line they're not really associated with come up as their edit just because they added a comma
-  + Typically best to just add rule to __ESLint__ and __Prettier__
-
-  #### 77 - Object.entries() + Object.values()
-  ```js
-  const inventory = {
-    backpacks: 10,
-    jeans: 23,
-    hoodies: 4,
-    shoes: 11
-  };
-
-  // Make a nav for the inventory
-  const nav = Object.keys(inventory).map(item => `<li>${item}</li>`).join('');
-  console.log(nav);
-
-  // tell us how many values we have
-  const totalInventory = Object.values(inventory).reduce((a, b) => a + b);
-  console.log(totalInventory);
-
-  // Print an inventory list with numbers
-  Object.entries(inventory).forEach(([key, val]) => {
-    console.log(key, val);
+```js
+async function logInOrder(urls) {
+  // fetch all the URLs in parallel
+  const textPromises = urls.map(async url => {
+    const response = await fetch(url);
+    return response.text();
   });
 
-  for (const [key, val] of Object.entries(inventory)) {
-    console.log(key);
-    if (key === 'jeans') break;
+  // log them in sequence
+  for (const textPromise of textPromises) {
+    console.log(await textPromise);
+  }
+}
+```
+https://developers.google.com/web/fundamentals/primers/async-functions
+
+#### 72 - Promisifying Callback Based Functions
+
+```js
+// navigator.geolocation.getCurrentPosition(function (pos) {
+//   console.log('it worked!');
+//   console.log(pos);
+// }, function (err) {
+//   console.log('it failed!');
+//   console.log(err);
+// });
+
+function getCurrentPosition(...args) {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(...args, resolve, reject);
+  });
+}
+
+async function go() {
+  console.log('starting');
+  const pos = await getCurrentPosition();
+  console.log(pos);
+  console.log('finished');
+}
+
+go();
+```
++ Allows us to make a callback-oriented API work on promises
++ 3rd party options also, including a built-in Node utility
+
+## Module 21 - ES7, ES8 + Beyond
+
+#### 73 - Class Properties
+```js
+class Dog {
+  constructor(name, breed) {
+    this.name = name;
+    this.breed = breed;
+  }
+
+  barks = 0;
+
+  bark() {
+    console.log(`Bark Bark! My name is ${this.name}`);
+    this.barks = this.barks + 1;
+  }
+}
+```
+ + Declaring _barks_ outside constructor is an example of a __class property__
+ + Commonly used in __React__
+
+ ```js
+ class Mouse extends React.Component {
+  static propTypes = {
+    render: PropTypes.func.isRequired
+  }
+
+  state = { x: 0, y: 0 }
+  ...
   }
   ```
-  + __Object.values()__ is like the other side of _Object.keys()_
-  + __Object.entries()__ returns each point in the object as a two-value array
-  + Benefit of __for...of__ is the ability to __break__ out of it, which cannot be done in _map_ or _forEach_
+  https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce
+
+
+Needs this Babel transform
+https://babeljs.io/docs/plugins/transform-class-properties/
+
+#### 74 - padStart and padEnd
+> The padStart() method pads the current string with another string (repeated, if needed) so that the resulting string reaches the given length.
+
+```js
+"1".padStart(3, 0) // 001
+```
++ Useful if trying to right align text to the longest string in a series
+
+```js
+const strings = ['short', 'medium size', 'this is really really long', 'this is really really really really really really long'];
+const longestString = strings.sort(str => str.length).map(str => str.length)[0];
+
+strings.forEach(str => console.log(str.padStart(longestString)));
+```
+
+#### 75 -  ES7 Array.includes() + Exponential Operator
+__Array.includes()__
+```js
+['a', 'b', 'c'].includes('c') //true
+```
+
+__Exponential Operator__
+```js
+3 ** 3 //27
+```
+
+#### 76 - Function Arguments Trailing Comma
+```js
+const names = [
+  'wes',
+  'kait',
+  'lux',
+  'poppy',
+];
+
+const people = {
+  wes: 'Cool',
+  kait: 'Even Cooler!',
+  lux: 'Coolest',
+  poppy: 'Smallest',
+  snickers: 'Bow wow',
+}
+
+function family(
+  mom,
+  dad,
+  children,
+  dogs,
+) {
+
+}
+```
++ Just as with arrays and objects, function arguments can accept __trailing commas__
++ Rationale is that someone contributing will not have a line they're not really associated with come up as their edit just because they added a comma
++ Typically best to just add rule to __ESLint__ and __Prettier__
+
+#### 77 - Object.entries() + Object.values()
+```js
+const inventory = {
+  backpacks: 10,
+  jeans: 23,
+  hoodies: 4,
+  shoes: 11
+};
+
+// Make a nav for the inventory
+const nav = Object.keys(inventory).map(item => `<li>${item}</li>`).join('');
+console.log(nav);
+
+// tell us how many values we have
+const totalInventory = Object.values(inventory).reduce((a, b) => a + b);
+console.log(totalInventory);
+
+// Print an inventory list with numbers
+Object.entries(inventory).forEach(([key, val]) => {
+  console.log(key, val);
+});
+
+for (const [key, val] of Object.entries(inventory)) {
+  console.log(key);
+  if (key === 'jeans') break;
+}
+```
++ __Object.values()__ is like the other side of _Object.keys()_
++ __Object.entries()__ returns each point in the object as a two-value array
++ Benefit of __for...of__ is the ability to __break__ out of it, which cannot be done in _map_ or _forEach_
