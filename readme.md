@@ -1,24 +1,52 @@
 # Notes on ES6 for Everyone
 
-Notes from the Wes Bos course.
+Notes from the Wes Bos course at [ES6.io](https://ES6.io)
 
 ![ES6 for Everyone](https://es6.io/images/es6-facebook-share.png?cool=yah)
 
-Everything you need to Learn ES6 over at [ES6.io](https://ES6.io)
-
-Key notes:
-
+### Personal highlights:
++ [Function scope vs block scope](#01---var-let-const)
++ [Block scope as replacement of IIFE](#03---let-and-const-in-the-real-world)
++ [Arrow functions don't rebind 'this'](#06---arrow-functions-introduction)
++ [Parenthesis needed around object literals for implicit return in arrow functions](#07---more-arrow-function-examples)
++ [Top-level functions on event handlers typically use non-arrow functions because rebinding 'this' is desired](#08---arrow-functions-and-this) *
+  + Inside event handlers though, arrow functions are great because 'this' can usefully refer to the event triggering element
++ Default function arguments (9)
++ Ternary with conditional logic for template literal (13)
++ Render function within a template literal (13)
++ Tagged template literals (14)
++ Assembling a tagged template literal programmatically with _reduce_ (15 + 16)
++ String methods: _startsWith_, _endsWith_, _includes_ (17)
++ Destructuring, renaming while destructuring, default values (18)
++ Rest operator (19)
++ Swapping variables through destructuring (20)
++ Returning multiple values through destructuring (21) *
++ Named defaults from an empty array (21)
++ For-of loop, break, continue, _entries_ (22)
++ Second parameter of _Array.from()_ runs _map()_ (25)
++ _Array.find()_ + _Array.findIndex()_ (26)
++ Spread operators as function arguments (31)
++ Rest operators as function parameters (32)
++ Updated key syntax on object literals (33)
++ Symbols (38)
++ ESLint + Git Hooks (44)
++ Default exports vs named exports in JS modules (45)
++ Babel "env" setting in .babelrc (49)
++ Static methods on classes (52)
++ Proxies, handlers, traps (58)
++ Sets + WeakSets (61)
++ Garbage collection (63)
++ Maps used for metadata collection on an object (64)
++ Promises + async/await (69)
++ Async/await error handling with higher-order functions (70) *
++ Class properties (73)
++ _Array.includes()_ (75)
++ Trailing commas (76)
++ _Object.entries()_ + _Object.values()_ (77)
 + Curly brackets have many meanings
   + object literals
   + destructuring variables out of an object
   + importing a named export
-
-+ Apply generator lesson to GH explorer?
-
-+ Simple webpack 4
-
-+ Simple Browsersync
-
 
 ## Module 1 - New Variables — Creation, Updating and Scoping
 
