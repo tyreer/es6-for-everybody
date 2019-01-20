@@ -13,7 +13,7 @@
     "insane": "^2.6.2",
     "jsonp": "^0.2.1",
     "lodash": "^4.17.5",
-    "slug": "^0.9.1"
+    "slug": "^0.9.3"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
